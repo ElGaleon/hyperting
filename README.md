@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## Hyperting Junior Frontend Test
+Hyperting Junior Frontend Test [https://github.com/Hyperting/frontend-test] developed by @ElGaleon in React Hooks and Javascript.
+
+### Considerations
+
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
