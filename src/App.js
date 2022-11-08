@@ -1,42 +1,44 @@
-import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import React, {useEffect, useState} from 'react';
+import MobileApp from './components/mobile/MobileApp';
+import DesktopApp from './components/desktop/DesktopApp';
+import useMediaQuery from './MediaQuery';
+import fetchUsers from './fetchUsers';
+import getResponseCount from './getResponseCount';
+
 
 function App() {
+  const isDesktop = useMediaQuery('(min-width: 480px)');
+  const [text, setText] = useState("");
+  const [users, setUsers] = useState([]);
+  const [pageSize, setPageSize] = useState(15);
+  const [numPage, setNumPage] = useState(1);
+  const [usersTotal, setUsersTotal] = useState(0)
+
+  const handleChange = (e) => {
+    setText(e.target.value);
+  }
+
+  const handlePageSize = (e) => {
+    setPageSize(e.target.value);
+  }
+
+  const handleNumPage = (value) => {
+    setNumPage(value);
+  }
+
+  useEffect(() => {
+    fetchUsers({name: text, pageSize: pageSize, numPage: numPage})
+    .then(users =>  setUsers(users))
+
+    getResponseCount({name: text, pageSize: pageSize, numPage: numPage})
+    .then((total) => setUsersTotal(total))
+  }, [users, usersTotal]);
+
   return (
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
-    </ChakraProvider>
-  );
+    (isDesktop == true) 
+    ? (<DesktopApp text={text} handleChange={handleChange} users={users} pageSize={pageSize} handlePageSize={handlePageSize} numPage={numPage} handleNumPage={handleNumPage} usersTotal={usersTotal}/>) 
+    : (<MobileApp text={text} handleChange={handleChange} users={users} usersTotal={usersTotal}/>)
+    );
 }
 
 export default App;
