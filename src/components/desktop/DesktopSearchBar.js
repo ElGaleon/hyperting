@@ -1,6 +1,6 @@
 import React from 'react';
-import {Button } from '@chakra-ui/react';
-import { CalendarIcon, } from '@chakra-ui/icons' 
+import {Button, Flex } from '@chakra-ui/react';
+import { CalendarIcon } from '@chakra-ui/icons' 
 import { FaFilter } from "react-icons/fa";
 import SearchBar from '../SearchBar';
 
