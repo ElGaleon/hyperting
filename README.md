@@ -11,6 +11,8 @@ Hyperting Junior Frontend Test [https://github.com/Hyperting/frontend-test] svil
 
 - Non funziona bene la shortcut CTRL+F per mettere il focus sulla searchbar
 
+- Per l'aggiunta dell'utente, visto che non c'erano indicazioni, ho sviluppato una mia proposta usando i modal e i form.
+
 - L'aggiunta dell'utente funziona, in quanto il codice della response della chiamata POST è il 201, ma se vado a ricercare l'utente in un secondo momento, non lo trova.
 
 ![title](/images/get_request.png)
