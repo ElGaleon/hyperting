@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import MobileApp from './components/mobile/MobileApp';
 import DesktopApp from './components/desktop/DesktopApp';
 import useMediaQuery from './MediaQuery';
-import fetchUsers from './fetchUsers';
-import getResponseCount from './getResponseCount';
+import fetchUsers from './logic/fetchUsers';
+import getResponseCount from './logic/getResponseCount';
 
 
 function App() {

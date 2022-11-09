@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Flex,  Text, Heading, Grid, GridItem, Container, Center, Select, Spacer} from '@chakra-ui/react';
 import UserCard from '../UserCard';
 import ViewBy from '../ViewBy';
@@ -12,8 +12,7 @@ import {
   PaginationContainer,
   PaginationSeparator
 } from "@ajna/pagination";
-import { Colors } from '../../Colors';
-import getResponseCount from '../../getResponseCount';
+import { Colors } from '../../utils/Colors';
 
 
 const DesktopAllUsers = ({users, handlePageSize, pageSize, handleNumPage, numPage, usersTotal}) => {

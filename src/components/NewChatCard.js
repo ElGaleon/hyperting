@@ -1,8 +1,5 @@
-import { Flex,  Container, Heading, Text, Icon, Box, Stack} from '@chakra-ui/react';
+import { Container, Text, Stack} from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons' 
-import {Colors} from '../Colors'
-import FilterBy from './FilterBy'
-import OnlineUsers from './OnlineUsers'
 
 const NewChatCard = () => {
   

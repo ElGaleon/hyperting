@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex, Container } from '@chakra-ui/react';
 import { HamburgerIcon, MoonIcon } from '@chakra-ui/icons' 
-import { Colors } from '../../Colors';
+import { Colors } from '../../utils/Colors';
 import SearchBar from '../SearchBar';
 
 const MobileSearchBar = ({handleChange, text}) => {

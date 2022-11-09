@@ -1,7 +1,5 @@
-import React, { useState,useEffect } from 'react';
-import { Flex,  Button, Heading, IconButton, Icon} from '@chakra-ui/react';
-import { AddIcon } from '@chakra-ui/icons' 
-import {Colors} from '../../Colors'
+import React from 'react';
+import { Flex, Heading, IconButton, Icon} from '@chakra-ui/react';
 import { MdMoreHoriz } from 'react-icons/md';
 import FilterBy from '../FilterBy'
 import DesktopOnlineUsers from './DesktopOnlineUsers'
