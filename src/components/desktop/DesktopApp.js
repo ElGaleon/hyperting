@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DesktopSearchBar from './DesktopSearchBar';
 import DesktopUsers from './DesktopUsers';
 

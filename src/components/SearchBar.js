@@ -29,7 +29,7 @@ const SearchBar = ({text, handleChange}) => {
         {isDesktop ? (
           <InputRightElement width='4.5rem'>
             <Button h='1.75rem' size='sm' color="gray.600" onClick={handleSearch} >⌘F</Button>
-          </InputRightElement>) : null}
+          </InputRightElement>) : ''}
       </InputGroup>
     </Stack>
     );

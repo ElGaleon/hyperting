@@ -1,7 +1,7 @@
-import React, {useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import { AddIcon } from '@chakra-ui/icons' 
 import {Colors} from '../utils/Colors'
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, useDisclosure, Radio, RadioGroup, Button, ModalFooter, FormControl, FormLabel, Input, Stack, Alert, AlertIcon, AlertDescription, AlertTitle, Spacer, useToast, FormErrorMessage} from '@chakra-ui/react';
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, useDisclosure, Radio, RadioGroup, Button, ModalFooter, FormControl, FormLabel, Input, Stack, FormErrorMessage} from '@chakra-ui/react';
 import createUser from '../logic/createUser';
 import fetchUsers from '../logic/fetchUsers';
   

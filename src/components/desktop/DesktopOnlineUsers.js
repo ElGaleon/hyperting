@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Flex,  Button, Heading, IconButton, Icon} from '@chakra-ui/react';
+import { Flex, Heading} from '@chakra-ui/react';
 import NewChatCard from '../NewChatCard'
 import UserCard from '../UserCard';
-import { Provider, Carousel } from "chakra-ui-carousel";
 
 const DesktopOnlineUsers = props => {
  const[onlineUsers, setOnlineUsers] = useState(props.users);
