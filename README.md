@@ -9,6 +9,8 @@ Hyperting Junior Frontend Test [https://github.com/Hyperting/frontend-test] svil
 
 - Manca la gestione del carosello degli utenti online.
 
+- Non funziona bene la shortcut CTRL+F per mettere il focus sulla searchbar
+
 - L'aggiunta dell'utente funziona, in quanto il codice della response della chiamata POST è il 201, ma se vado a ricercare l'utente in un secondo momento, non lo trova.
 
 ![title](/images/get_request.png)

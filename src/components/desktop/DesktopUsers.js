@@ -8,7 +8,6 @@ import DesktopAllUsers from './DesktopAllUsers';
 
 
 const DesktopUsers = ({users, handlePageSize, pageSize, handleNumPage, numPage, usersTotal}) => {
-  {console.log(users);}
   return (
     <>
       <Flex color='white' padding="18px 32px 16px 32px" justifyContent="space-between">

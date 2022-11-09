@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {Stack, InputGroup, Input, InputLeftElement, InputRightElement, Button } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons' 
 import useMediaQuery from '../MediaQuery';
@@ -8,14 +8,15 @@ const SearchBar = ({text, handleChange}) => {
   const isDesktop = useMediaQuery('(min-width: 480px)');
   const ref = useRef(null)
   
-  // Listener for CTRL+F/CMD+F
-  window.addEventListener('keydown', function (e, previous) {
-    if (previous === 'Meta' && e.key == 'f') {
+  // Listener for CTRL+F/CMD+F - doesn't work
+  window.addEventListener('keydown', function (e) {
+    console.log(e.key === 'Meta' && e.key == 'f');
+    if (e.key === 'Meta' && e.key == 'f') {
       e.preventDefault();
       ref.current.focus();
-    }
-    previous = e.key;
-  });
+      }
+  })
+
 
   const handleSearch = () => {
     ref.current.focus();
