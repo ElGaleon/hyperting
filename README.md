@@ -11,8 +11,8 @@ Hyperting Junior Frontend Test [https://github.com/Hyperting/frontend-test] svil
 
 - L'aggiunta dell'utente funziona, in quanto il codice della response della chiamata POST è il 201, ma se vado a ricercare l'utente in un secondo momento, non lo trova.
 
-![image.info][./images/get_request]
-![image.info][./images/in_app_research]
+![title][images/get_request.png]
+![image.info][./images/in_app_research.png]
 
 
 ---
