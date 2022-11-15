@@ -1,7 +1,11 @@
 import React from 'react';
 import { Flex,  Text, Heading, Grid, GridItem, Container, Center, Select, Spacer} from '@chakra-ui/react';
-import UserCard from '../UserCard';
-import ViewBy from '../ViewBy';
+import UserCard from './UserCard';
+import {ArrowDownIcon} from '@chakra-ui/icons' 
+import useMediaQuery from '../MediaQuery';
+import {Colors} from '../utils/Colors';
+import ViewBy from './ViewBy';
+import MobileNavBar from './MobileNavBar';
 import {
   Pagination,
   usePagination,
@@ -12,14 +16,13 @@ import {
   PaginationContainer,
   PaginationSeparator
 } from "@ajna/pagination";
-import { Colors } from '../../utils/Colors';
 
 
-const DesktopAllUsers = ({users, handlePageSize, pageSize, handleNumPage, numPage, usersTotal}) => {
- 
+const AllUsers = ({users, pageSize, numPage, handlePageSize, handleNumPage, usersTotal}) => {
+ const isDesktop = useMediaQuery('(min-width:480px)');
+
  const outerLimit = 2;
  const innerLimit = 2;
-
 
   const{
     pages, 
@@ -36,10 +39,11 @@ const DesktopAllUsers = ({users, handlePageSize, pageSize, handleNumPage, numPag
     }
   })
 
-  //getResponseCount().then(res => setUsersTotal(res))
+
   return (
-    <>
-    <Flex margin={"32px 36px 0px 36px"} justifyContent={'space-between'} >
+    isDesktop ? (
+        <>
+        <Flex margin={"32px 36px 0px 36px"} justifyContent={'space-between'} >
         <Flex alignItems={'center'}>
       <Heading fontSize={'20px'} color={'gray.600'} fontWeight={'normal'} marginBottom={'0px'}>Users</Heading>
       <Container width={'23px'} height={'20px'} backgroundColor={'gray.200'} borderRadius={'100px'} display={'flex'} justifyContent={'center'} alignItems={'center'} marginLeft={'8px'}>
@@ -144,9 +148,41 @@ const DesktopAllUsers = ({users, handlePageSize, pageSize, handleNumPage, numPag
             <option value="43">43</option>
     </Select>
     </Flex>
-
-
     </>
+    ) : 
+    (
+    <>
+        <Flex margin={"32px 36px 0px 36px"} justifyContent={'space-between'} >
+        <Flex alignItems={'center'}>
+      <Heading fontSize={'20px'} color={'gray.600'} fontWeight={'normal'} marginBottom={'0px'}>Users</Heading>
+      <Container width={'23px'} height={'20px'} backgroundColor={'gray.200'} borderRadius={'100px'} display={'flex'} justifyContent={'center'} alignItems={'center'} marginLeft={'8px'}>
+        <Center>
+            <Text color={'gray.500'} fontSize={'11px'} >{usersTotal}</Text>
+        </Center>
+      </Container>
+      </Flex>
+      <ViewBy />
+    </Flex>
+    <Flex
+      flexDirection={'column'}
+        margin={'16px 24px 0px 24px'}
+        justifyContent={'center'}
+    >
+        {users && users.map(u => ( (users.indexOf(u) < 3) ? <GridItem colSpan={4} children={<UserCard user={u} settings={true} customWidth={'auto'} customFlexGrow={1}/>}/> :  <GridItem colSpan={3} children={<UserCard user={u} settings={true} customWidth={'auto'} customFlexGrow={1}/>}/> ))}
+        </Flex>
+        <Center>
+          
+          </Center>
+        <Flex flexDirection={'column'} justifyContent={'center'}  margin={'40px auto 150px auto'} >
+        <Container bgColor={'gray.200'} borderRadius={'100px'} width={'40px'} height={'40px'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+              <ArrowDownIcon color={'gray.500'} width={'24px'} height={'32px'}></ArrowDownIcon>
+          </Container>
+          <Text color={'gray-600'} textAlign={'center'} margin={'8px auto 0px auto'}>Load more</Text>
+        </Flex>
+        <MobileNavBar />
+        </>
+    )
   );
-  }
-export default DesktopAllUsers;
+};
+ 
+export default AllUsers; 

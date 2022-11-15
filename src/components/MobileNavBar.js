@@ -2,7 +2,7 @@ import React from 'react';
 import { Avatar,  AvatarBadge, Grid, GridItem, Container, Center, color} from '@chakra-ui/react';
 import {CalendarIcon} from '@chakra-ui/icons' 
 import { MdFolderOpen, MdDashboard, MdPeople } from 'react-icons/md'
-import { Colors } from '../../utils/Colors';
+import { Colors } from '../utils/Colors';
 
 
 const MobileNavBar = () => {

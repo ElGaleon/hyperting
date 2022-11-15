@@ -1,39 +1,38 @@
-import React, {useEffect, useRef} from 'react';
-import {Stack, InputGroup, Input, InputLeftElement, InputRightElement, Button } from '@chakra-ui/react';
-import { SearchIcon } from '@chakra-ui/icons' 
+import React from 'react';
+import { Flex, Container, Button } from '@chakra-ui/react';
+import { HamburgerIcon, MoonIcon, CalendarIcon } from '@chakra-ui/icons' 
+import {Colors} from '../utils/Colors'
+import { FaFilter } from "react-icons/fa";
+import SearchBarInput from './SearchBarInput';
 import useMediaQuery from '../MediaQuery';
 
-
-const SearchBar = ({text, handleChange}) => {
-  const isDesktop = useMediaQuery('(min-width: 480px)');
-  const ref = useRef(null)
-  
-  // Listener for CTRL+F/CMD+F - doesn't work
-  window.addEventListener('keydown', function (e) {
-    console.log(e.key === 'Meta' && e.key == 'f');
-    if (e.key === 'Meta' && e.key == 'f') {
-      e.preventDefault();
-      ref.current.focus();
-      }
-  })
-
-
-  const handleSearch = () => {
-    ref.current.focus();
-  }
-
+const SearchBar = ({handleChange, text}) => {
+    const isDesktop = useMediaQuery('(min-width: 480px)');
   return (
-    <Stack width={isDesktop ? "599px" : "auto"}>
-      <InputGroup>
-        <InputLeftElement pointerEvents='none' children={<SearchIcon color='gray.500' />}/>
-        <Input type='text' ref={ref} placeholder='Search...' color="gray.600" value={text} onChange={handleChange} boxShadow={'0px 1px 4px rgba(0, 0, 0, 0.05), 0px 6px 24px rgba(0, 0, 0, 0.04), inset 0px 1px 1px rgba(0, 0, 0, 0.04);'} borderRadius={'12px'}/>
-        {isDesktop ? (
-          <InputRightElement width='4.5rem'>
-            <Button h='1.75rem' size='sm' color="gray.600" onClick={handleSearch} >⌘F</Button>
-          </InputRightElement>) : ''}
-      </InputGroup>
-    </Stack>
-    );
+    isDesktop ? (
+        // Desktop SearchBar
+        <Flex margin="16px 32px 16px 32px" justifyContent="space-between">
+      <SearchBarInput text={text} handleChange={handleChange}/>
+      <Flex width="599px" justifyContent="flex-end" alignItems="center">
+        <Button height="40px" width="107px" colorScheme='white' color="gray.600" border="1px" borderColor="gray.300" borderRadius="13px" rightIcon={<FaFilter color="grey.500"/>}>
+          Filter
+        </Button>
+        <Button height="40px" width="40px"  colorScheme='white' color="gray.600" border="1px" borderColor="gray.300" borderRadius="13px" marginLeft="8px">
+        <CalendarIcon color='gray.500' />
+        </Button>
+      </Flex>
+    </Flex>
+    ) : (
+        // Mobile SearchBar
+        <Container width={'100%'} height={'120px'} display={'flex'} alignItems={'flex-end'}  boxShadow={'0px 2px 8px rgba(0, 0, 0, 0.06);'}>
+        <Flex justifyContent="space-between" alignItems={'center'} margin={'16px'} width={'fit-content'}>
+          <MoonIcon color={Colors.primary} marginRight={'12px'}/>
+          <SearchBarInput text={text} handleChange={handleChange} />
+          <HamburgerIcon width={'24px'} height={'24px'} marginLeft={'12px'}/>
+        </Flex>
+      </Container>
+    )
+  );
 };
  
 export default SearchBar; 

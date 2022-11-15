@@ -1,18 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import MobileApp from './components/mobile/MobileApp';
-import DesktopApp from './components/desktop/DesktopApp';
-import useMediaQuery from './MediaQuery';
+import Users from './components/Users';
 import fetchUsers from './logic/fetchUsers';
 import getResponseCount from './logic/getResponseCount';
+import SearchBar from './components/SearchBar';
+import MobileNavBar from './components/MobileNavBar';
+import useMediaQuery from './MediaQuery';
 
 
 function App() {
-  const isDesktop = useMediaQuery('(min-width: 480px)');
   const [text, setText] = useState("");
   const [users, setUsers] = useState([]);
   const [pageSize, setPageSize] = useState(15);
   const [numPage, setNumPage] = useState(1);
-  const [usersTotal, setUsersTotal] = useState(0)
+  const [usersTotal, setUsersTotal] = useState(0);
+  const isDesktop = useMediaQuery('(min-width:480px)');
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -35,10 +36,11 @@ function App() {
   }, [users, usersTotal]);
 
   return (
-    (isDesktop == true) 
-    ? (<DesktopApp text={text} handleChange={handleChange} users={users} pageSize={pageSize} handlePageSize={handlePageSize} numPage={numPage} handleNumPage={handleNumPage} usersTotal={usersTotal}/>) 
-    : (<MobileApp text={text} handleChange={handleChange} users={users} usersTotal={usersTotal}/>)
-    );
+    <>
+    <SearchBar text={text} handleChange={handleChange}/>
+    <Users users={users} pageSize={pageSize} numPage={numPage} handleNumPage={handleNumPage} handlePageSize={handlePageSize} usersTotal={usersTotal}/> 
+    </>
+  );
 }
 
 export default App;
